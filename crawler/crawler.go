@@ -32,6 +32,10 @@ func IMSLPScrape(res *http.Response) (title string, compose string, style string
 			instrument = s.Find("td").Text()
 			// println(instrument)
 		}
+		if s.Find("th").Text() == "InstrDetail\n" {
+			instrument = s.Find("td").Text()
+			// println(instrument)
+		}
 
 		// println("---------------")
 

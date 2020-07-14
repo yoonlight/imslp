@@ -8,12 +8,13 @@ import (
 	conn "imslp/connect"
 	"imslp/crawler"
 	imslpparse "imslp/imslpParse"
-	"log"
 	"os"
 	"strings"
 )
 
 func main() {
+	// conn.CheckHTML("https://imslp.org/wiki/Symphony_No.5%2C_Op.64_(Tchaikovsky%2C_Pyotr)")
+
 	var url []string
 	var infor [][]string
 
@@ -32,9 +33,9 @@ func main() {
 
 	var errmsg = "imslp read error"
 	list := make(map[int]map[string]string)
-	log.Println(url)
+	// log.Println(url)
 	for i, imslp := range url {
-		log.Println(imslp)
+		// log.Println(imslp)
 		temp := strings.TrimSpace(imslp)
 
 		res := conn.ConnectTLS(temp, errmsg)
