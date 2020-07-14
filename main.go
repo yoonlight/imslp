@@ -34,20 +34,17 @@ func main() {
 
 	var errmsg = "imslp read error"
 	list := make(map[int]map[string]string)
-	// log.Println(url)
 	for i, imslp := range url {
-		// log.Println(imslp)
-		temp := strings.TrimSpace(imslp)
-
+		temp := strings.TrimSpace(imslp) + "#tabScore2"
+		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
 		title, compose, style, instrument := crawler.IMSLPScrape(res)
+		log.Println(crawler.InstrScrape(res), i)
 		m := imslpparse.ParseInstr(instrument)
 		list[i] = m
 		music := []string{title, compose, style}
 		infor = append(infor, music)
-		log.Println(crawler.InstrScrape(res))
-		res.Body.Close()
+		defer res.Body.Close()
 	}
 	createcsv.CreateCsv(infor, list)
-
 }

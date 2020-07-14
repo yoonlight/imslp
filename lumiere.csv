@@ -1,125 +1,125 @@
-﻿Title,Composer,Style,strings,piccolo,flute,oboe,english horn,clarinet,bass clarinet,bassoon,contrabassoon,horn,trumpet,trombone,tuba,tirangle,cymbal,bass drum,snare drum,organ,piano,timpani,harp
-"Symphony No.1 in C major
-","Beethoven, Ludwig van
-","Classical
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
+Title,Composer,Style,strings,piccolo,flute,oboe,english horn,clarinet,bass clarinet,bassoon,contrabassoon,horn,trumpet,trombone,tuba,tirangle,cymbal,bass drum,snare drum,organ,piano,timpani,harp
 "Symphony No.2
 ","Beethoven, Ludwig van
 ","Classical
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.3
-","Beethoven, Ludwig van
-","Classical
-",1,,2,2,,2,,2,,3,2,,,,,,,,,1,
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
 "Symphony No.4
-","Beethoven, Ludwig van
-","Classical
-",1,,,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.5
-","Beethoven, Ludwig van
-","Classical
-",1,1,2,2,,2,,2,1,2,2,3,,,,,,,,1,
-"Symphony No.6
-","Beethoven, Ludwig van
-","Classical
-",1,1,2,2,,2,,2,,2,2,2,,,,,,,,1,
-"Symphony No.7
-","Beethoven, Ludwig van
-","Classical
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.8
-","Beethoven, Ludwig van
-","Classical
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.9
-","Beethoven, Ludwig van
+","Brahms, Johannes
 ","Romantic
-",1,1,2,2,,2,,2,1,4,2,3,,1,1,1,,,,1,
+",1,1,2 ,2 ,,2 ,,2 ,1,4 ,2 ,3 ,,1,,,,,,1,
 "Symphony No.1
-","Brahms, Johannes
+","Tchaikovsky, Pyotr
 ","Romantic
-",1,,2,2,,2,,2,1,4,2,3,,,,,,,,1,
-"Symphony No.2
-","Brahms, Johannes
-","Romantic
-",1,,2,2,,2,,2,,4,2,3,1,,,,,,,1,
-"Symphony No.3
-","Brahms, Johannes
-","Romantic
-",1,,2,2,,2,,2,1,4,2,3,,,,,,,,1,
-"Symphony No.4
-","Brahms, Johannes
-","Romantic
-",1,1,2,2,,2,,2,1,4,2,3,,1,,,,,,1,
-"Symphony No.5
-","Dvořák, Antonín
-","Romantic
-",1,,2,2,,2,1,2,,4,2,3,,1,,,,,,1,
-"Symphony No.6
-","Dvořák, Antonín
-","Romantic
-",1,,2,2,,2,,2,,4,2,3,1,,,,,,,1,
-"Symphony No.7
-","Dvořák, Antonín
-","Romantic
-",1,,2,2,,2,,2,,4,2,3,,,,,,,,1,
-"Symphony No.8
-","Dvořák, Antonín
-","Romantic
-",1,1,2,2,1,2,,2,,4,2,3,1,,,,,,,1,
-"Symphony No.9
-","Dvořák, Antonín
-","Romantic
-",1,1,2,2,1,2,,2,,4,2,3,1,1,1,,,,,1,
-"The Wild Dove ; Holoubek ; Die Waldtaube
-","Dvořák, Antonín
-","Romantic
-",1,1,2,2,1,2,1,2,,4,3,3,1,1,1,1,,,,1,1
-"Symphony No.1 in C minor
-","Mendelssohn, Felix
-","Romantic
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.2 in B♭ major (“Hymn of Praise”)
-","Mendelssohn, Felix
-","Romantic
-",1,,2,2,,2,,2,,4,2,3,,,,,,1,,1,
-"Symphony No.3
-","Mendelssohn, Felix
-","Romantic
-",1,,2,2,,2,,2,,4,2,,,,,,,,,1,
+",1,1,2 ,2 ,,2 ,,2 ,,4 ,,3 ,1,,1,1,,,,1,
 "Symphony No.4 in A major
 ","Mendelssohn, Felix
 ","Romantic
-",1,,2,2,,2,,2,,2,2,,,,,,,,,1,
-"Symphony No.5 in D minor
-","Mendelssohn, Felix
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"The Wild Dove ; Holoubek ; Die Waldtaube
+","Dvořák, Antonín
 ","Romantic
-",1,,2,2,,2,,2,1,2,2,3,,,,,,,,1,
-"Symphony No.3
-","Saint-Saëns, Camille
+",1,1,2 ,2 ,1,2 ,1,2 ,,4 ,3 ,3 ,1,1,1,1,,,,1,1
+"Symphony No.7
+","Beethoven, Ludwig van
+","Classical
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"Symphony No.8
+","Beethoven, Ludwig van
+","Classical
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"Symphony No.5
+","Dvořák, Antonín
 ","Romantic
-",1,1,3,2,1,2,1,2,1,4,3,3,1,1,1,1,,1,1,1,
-"Symphony No.1
-","Tchaikovsky, Pyotr
-","Romantic
-",1,1,2,2,,2,,2,,4,,3,1,,1,1,,,,1,
+",1,,2 ,2 ,,2 ,1,2 ,,4 ,2 ,3 ,,1,,,,,,1,
 "Symphony No.2
 ","Tchaikovsky, Pyotr
 ","Romantic
-",1,1,2,2,,2,,2,,4,2,3,1,,1,1,,,,1,
+",1,1,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,1,1,,,,1,
+"Symphony No.6
+","Beethoven, Ludwig van
+","Classical
+",1,1,2 ,2 ,,2 ,,2 ,,2 ,2 ,2 ,,,,,,,,1,
+"Symphony No.8
+","Dvořák, Antonín
+","Romantic
+",1,1,2 ,2 ,1,2 ,,2 ,,4 ,2 ,3 ,1,,,,,,,1,
+"Symphony No.9
+","Dvořák, Antonín
+","Romantic
+",1,1,2 ,2 ,1,2 ,,2 ,,4 ,2 ,3 ,1,1,1,,,,,1,
+"Symphony No.3
+","Mendelssohn, Felix
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,,4 ,2 ,,,,,,,,,1,
 "Symphony No.3
 ","Tchaikovsky, Pyotr
 ","Romantic
-",1,1,2,2,,2,,2,,4,2,3,1,,,,,,,1,
-"Symphony No.4
-","Tchaikovsky, Pyotr
+",1,1,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,,,,,,1,
+"Symphony No.6
+","Dvořák, Antonín
 ","Romantic
-",1,1,2,2,,2,,2,,4,2,3,1,1,1,1,,,,1,
+",1,,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,,,,,,1,
+"Symphony No.3
+","Saint-Saëns, Camille
+","Romantic
+",1,1,3 ,2 ,1,2 ,1,2 ,1,4 ,3 ,3 ,1,1,1,1,,1,1,1,
+"Symphony No.1 in C major
+","Beethoven, Ludwig van
+","Classical
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"Symphony No.3
+","Beethoven, Ludwig van
+","Classical
+",1,,2 ,2 ,,2 ,,2 ,,3 ,2 ,,,,,,,,,1,
 "Symphony No.5
 ","Tchaikovsky, Pyotr
 ","Romantic
-",1,1,3,2,,2,,2,,4,2,3,1,,,,,,,1,
+",1,1,3 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,,,,,,1,
+"Symphony No.9
+","Beethoven, Ludwig van
+","Romantic
+",1,1,2 ,2 ,,2 ,,2 ,1,4 ,2 ,3 ,,1,1,1,,,,1,
+"Symphony No.2
+","Brahms, Johannes
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,,,,,,1,
 "Symphony No.6
 ","Tchaikovsky, Pyotr
 ","Romantic
-",1,1,3,2,,2,,2,,4,2,3,1,,1,1,,,,1,
+",1,1,3 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,,1,1,,,,1,
+"Symphony No.7
+","Dvořák, Antonín
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,,,,,,,,1,
+"Symphony No.1 in C minor
+","Mendelssohn, Felix
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"Symphony No.4
+","Beethoven, Ludwig van
+","Classical
+",1,,,2 ,,2 ,,2 ,,2 ,2 ,,,,,,,,,1,
+"Symphony No.5
+","Beethoven, Ludwig van
+","Classical
+",1,1,2 ,2 ,,2 ,,2 ,1,2 ,2 ,3 ,,,,,,,,1,
+"Symphony No.1
+","Brahms, Johannes
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,1,4 ,2 ,3 ,,,,,,,,1,
+"Symphony No.3
+","Brahms, Johannes
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,1,4 ,2 ,3 ,,,,,,,,1,
+"Symphony No.4
+","Tchaikovsky, Pyotr
+","Romantic
+",1,1,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,1,1,1,1,,,,1,
+"Symphony No.2 in B♭ major (“Hymn of Praise”)
+","Mendelssohn, Felix
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,,4 ,2 ,3 ,,,,,,1,,1,
+"Symphony No.5 in D minor
+","Mendelssohn, Felix
+","Romantic
+",1,,2 ,2 ,,2 ,,2 ,1,2 ,2 ,3 ,,,,,,,,1,

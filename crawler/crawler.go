@@ -2,6 +2,7 @@ package crawler
 
 import (
 	errcheck "imslp/ErrorCheck"
+	"log"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
@@ -36,12 +37,11 @@ func IMSLPScrape(res *http.Response) (title string, compose string, style string
 func InstrScrape(res *http.Response) (instrument []string) {
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	errcheck.CheckError(err, "imslp data Read Error")
-	doc.Find("div.we").Each(func(i int, s *goquery.Selection) {
-		instrument = append(instrument, s.Find("div.we_file_first we_fileblock_6 span").Text())
-		s.Find("we_file we_fileblock_6").Each(func(i int, d *goquery.Selection) {
-			instrument = append(instrument, d.Find("span").Text())
-		})
+	doc.Find("div.we_file_download plainlinks").Each(func(i int, s *goquery.Selection) {
+		log.Println("sdasd")
+		log.Println(s.Text())
+		instrument = append(instrument, s.Find("span").Text())
+		log.Println(s.Find("span").Text())
 	})
 	return
-
 }
