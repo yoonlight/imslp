@@ -8,6 +8,7 @@ import (
 	conn "imslp/connect"
 	"imslp/crawler"
 	imslpparse "imslp/imslpParse"
+	"log"
 	"os"
 	"strings"
 )
@@ -40,11 +41,12 @@ func main() {
 
 		res := conn.ConnectTLS(temp, errmsg)
 		title, compose, style, instrument := crawler.IMSLPScrape(res)
-		res.Body.Close()
 		m := imslpparse.ParseInstr(instrument)
 		list[i] = m
 		music := []string{title, compose, style}
 		infor = append(infor, music)
+		log.Println(crawler.InstrScrape(res))
+		res.Body.Close()
 	}
 	createcsv.CreateCsv(infor, list)
 
