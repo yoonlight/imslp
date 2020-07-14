@@ -25,7 +25,7 @@ func CreateCsv(infor [][]string, list map[int]map[string]string) {
 		title = infor[i][0]
 		compose = infor[i][1]
 		style = infor[i][2]
-		result, _ := iconv.ConvertString(compose, "utf-8", "latin1")
+		result, _ := iconv.ConvertString(compose, "utf-8", "utf-8")
 
 		wr.Write([]string{title, result, style, "1", m["piccolo"], m["flute"], m["oboe"], m["English horn"], m["clarinet"], m["bass clarinet"],
 			m["bassoons"], m["contra bassoon"], m["horns"], m["trumpets"], m["trombones"], m["tuba"], m["triangle"], m["cymbals"], m["bass drum"],
