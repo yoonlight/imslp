@@ -10,11 +10,31 @@ type IMSLPInfo struct {
 
 // Instrument type is parsing instrument and save
 type Instrument struct {
-	strings    string
-	WoodWind   WoodWind
-	BrassWind  BrassWind
-	Percussion Percussion
+	strings       string
+	piccolo       string
+	flute         string
+	oboe          string
+	englishHorn   string
+	clarinet      string
+	bassClarinet  string
+	bassoon       string
+	contraBassoon string
+	horn          string
+	trumpet       string
+	trombone      string
+	tuba          string
+	triangle      string
+	cymbals       string
+	bassDrum      string
+	snareDrum     string
+	organ         string
+	piano         string
+	timpani       string
+	harp          string
 }
+
+// Instruments array
+type Instruments []Instrument
 
 // WoodWind save
 type WoodWind struct {
@@ -49,38 +69,29 @@ type Percussion struct {
 }
 
 // ImportInfo :
-func ImportInfo(m map[string]string) Instrument {
-	var (
-		WoodWind   WoodWind
-		BrassWind  BrassWind
-		Percussion Percussion
-	)
-	WoodWind.piccolo = m["piccolo"]
-	WoodWind.flute = m["flute"]
-	WoodWind.oboe = m["oboe"]
-	WoodWind.englishHorn = m["English horn"]
-	WoodWind.clarinet = m["clarinet"]
-	WoodWind.bassClarinet = m["bass clarinet"]
-	WoodWind.bassoon = m["bassoons"]
-	WoodWind.contraBassoon = m["contra bassoon"]
-	BrassWind.horn = m["horns"]
-	BrassWind.trumpet = m["trumpets"]
-	BrassWind.trombone = m["trombones"]
-	BrassWind.tuba = m["tuba"]
-	Percussion.triangle = m["triangle"]
-	Percussion.cymbals = m["cymbals"]
-	Percussion.bassDrum = m["bass drum"]
-	Percussion.snareDrum = m["snare drum"]
-	Percussion.organ = m["organ"]
-	Percussion.piano = m["piano"]
-	Percussion.timpani = m["timpani"]
-	Percussion.harp = m["harp"]
+func ImportInfo(m map[string]string) (Instrument Instrument) {
 
-	return Instrument{
-		strings:    "1",
-		WoodWind:   WoodWind,
-		BrassWind:  BrassWind,
-		Percussion: Percussion,
-	}
+	Instrument.strings = "1"
+	Instrument.piccolo = m["piccolo"]
+	Instrument.flute = m["flute"]
+	Instrument.oboe = m["oboe"]
+	Instrument.englishHorn = m["English horn"]
+	Instrument.clarinet = m["clarinet"]
+	Instrument.bassClarinet = m["bass clarinet"]
+	Instrument.bassoon = m["bassoons"]
+	Instrument.contraBassoon = m["contra bassoon"]
+	Instrument.horn = m["horns"]
+	Instrument.trumpet = m["trumpets"]
+	Instrument.trombone = m["trombones"]
+	Instrument.tuba = m["tuba"]
+	Instrument.triangle = m["triangle"]
+	Instrument.cymbals = m["cymbals"]
+	Instrument.bassDrum = m["bass drum"]
+	Instrument.snareDrum = m["snare drum"]
+	Instrument.organ = m["organ"]
+	Instrument.piano = m["piano"]
+	Instrument.timpani = m["timpani"]
+	Instrument.harp = m["harp"]
 
+	return
 }

@@ -8,8 +8,8 @@ import (
 // ParseInstr :
 func ParseInstr(instrument string) (m map[string]string) {
 	m = make(map[string]string)
-	reg := `(?m)(?s)flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo `
-	reg2 := `(?m)(?s)(\d.)(flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo)`
+	reg := `(?m)(?s)flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn`
+	reg2 := `(?m)(?s)(\d.)(flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn)`
 	var re = regexp.MustCompile(reg)
 	for _, match := range re.FindAllStringSubmatch(instrument, -1) {
 		num := strconv.Itoa(1)
@@ -34,7 +34,7 @@ func caseParse(num string, name string, m map[string]string) (b map[string]strin
 		m["flute"] = num
 	case "oboes":
 		m["oboe"] = num
-	case "English horn":
+	case "English horn", "english horn":
 		m["English horn"] = num
 	case "clarinets":
 		m["clarinet"] = num
