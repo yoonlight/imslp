@@ -29,11 +29,14 @@ func main() {
 	file.Close()
 
 	var errmsg = "imslp read error"
-	for i, imslp := range url {
+	for _, imslp := range url {
 		temp := strings.TrimSpace(imslp) + "#tabScore2"
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
-		log.Println(crawler.InstrScrape(res), i)
+		instrument := crawler.InstrScrape(res)
+		for _, arr := range instrument {
+			log.Println(arr)
+		}
 		defer res.Body.Close()
 	}
 }

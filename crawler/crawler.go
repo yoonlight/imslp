@@ -2,13 +2,12 @@ package crawler
 
 import (
 	errcheck "imslp/ErrorCheck"
-	"log"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
-// IMSLPScrape : IMSLP 곡 정보 url을 가져오면 접속이 가능하게...
+// IMSLPScrape : scrapes symphony to use infromation part crawling
 func IMSLPScrape(res *http.Response) (title string, compose string, style string, instrument string) {
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	errcheck.CheckError(err, "imslp data Read Error")
@@ -34,14 +33,17 @@ func IMSLPScrape(res *http.Response) (title string, compose string, style string
 }
 
 // InstrScrape : opera 등등은 파트보를 크롤링함..
-func InstrScrape(res *http.Response) (instrument []string) {
+func InstrScrape(res *http.Response) (instruments []string) {
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	errcheck.CheckError(err, "imslp data Read Error")
-	doc.Find("div.we_file_download plainlinks").Each(func(i int, s *goquery.Selection) {
-		log.Println("sdasd")
-		log.Println(s.Text())
-		instrument = append(instrument, s.Find("span").Text())
-		log.Println(s.Find("span").Text())
+	doc.Find("div#tabScore2").AddClass(".jq-ui-tabs-panel ui-widget-content ui-corner-bottom").Each(func(i int, s *goquery.Selection) {
+
+		s.Find("a").AddClass(".eternal text").Each(func(i int, x *goquery.Selection) {
+			instrument := x.Find("span").RemoveClass(".we_file_dlarrwrap").Text()
+			if instrument != "" {
+				instruments = append(instruments, instrument)
+			}
+		})
 	})
 	return
 }

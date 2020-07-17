@@ -1,3 +1,17 @@
 https://www.google.com/search?q=site:imslp.org+Template%3ASymphonies%20
 
 to do list 형태에 csv export 가 들어가는 것도 괜찮은 방법일거 같은데?
+
+현재 상태는 흠... 실행시키면 미리 txt,csv 파일로 input을 저장하여 크롤링해서 만들어주는 형태임.
+계쇡은 프로그램처럼 실행시키구서 확인 할수 있게...!
+
+to do list 형태를 확인해보자.
+1. head: imslp 악기 제공사이트
+2. input: url을 input으로 하는게 제일 쉬운데 이렇게 하면 사용하는데 애로사항이 좀 있을거 같다. 고민좀 해보자.
+3. body: list, delete 기능도 만들어야겠지?
+4. foot: export: csv로 내보낼거임
+front: js(Vue 쓸래)
+back: go로 다 만들어놔서 이거 써야됨.
+db: sqlite or mariadb 프로그램에 한번에 다 내장시키게 하고 싶은데... sqlite가 캐싱도 되서 제일 나을거 같다는 생각이 든다.
+
+악기가 뭐가 있는지 다 조사할수가 없으므로 악기만 크롤링해서 돌리자.

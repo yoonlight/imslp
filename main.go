@@ -38,8 +38,10 @@ func main() {
 		temp := strings.TrimSpace(imslp) + "#tabScore2"
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
+
 		title, compose, style, instrument := crawler.IMSLPScrape(res)
 		log.Println(crawler.InstrScrape(res), i)
+
 		m := imslpparse.ParseInstr(instrument)
 		list[i] = m
 		music := []string{title, compose, style}

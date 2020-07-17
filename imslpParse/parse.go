@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// ParseInstr :
+// ParseInstr : 악기 별로 parsing 해줌
 func ParseInstr(instrument string) (m map[string]string) {
 	m = make(map[string]string)
 	reg := `(?m)(?s)flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn`

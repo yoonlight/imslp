@@ -9,7 +9,7 @@ import (
 	iconv "github.com/djimenez/iconv-go"
 )
 
-// CreateCsv :
+// CreateCsv : csv 파일 만들어줌.
 func CreateCsv(infor [][]string, list map[int]map[string]string) {
 	var (
 		title   string
