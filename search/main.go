@@ -1,18 +1,20 @@
 package main
 
 import (
-	conn "imslp/connect"
-	"imslp/crawler"
+	"context"
 	"log"
 	"net/url"
+
+	googlesearch "github.com/rocketlaunchr/google-search"
 )
 
 func main() {
 	name := url.QueryEscape("tachikovsky symphony no.5")
-
-	url := "https://www.google.com/search?q=site:imslp.org+" + name
+	ctx := context.Background()
+	url := "site:imslp.org+" + name
 	log.Println(url)
-	res := conn.ConnectTLS(url, "search error")
-	log.Println(crawler.GoogleSearch(res))
-	// conn.CheckHTML(url)
+	var result []googlesearch.Result
+	result, _ = googlesearch.Search(ctx, url)
+	log.Println(result[0].URL)
+	log.Println(result[0].Title)
 }
