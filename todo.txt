@@ -24,3 +24,6 @@ https://soyoung-new-challenge.tistory.com/93
 
 Complete
 1. song search code complete
+
+todo 
+1. 악기를 추가하게 되면 여러가지를 건들여야하는데 그거 문제가 있는거 같다. 어떻게 할지 구상이 필요할것으로 보임.
