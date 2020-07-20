@@ -3,36 +3,40 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	createcsv "imslp/CreateCsv"
 	errcheck "imslp/ErrorCheck"
 	conn "imslp/connect"
 	"imslp/crawler"
 	imslpparse "imslp/imslpParse"
+	"imslp/search"
 	"log"
 	"os"
 	"strings"
 )
 
 func main() {
-	// conn.CheckHTML("https://imslp.org/wiki/Symphony_No.5%2C_Op.64_(Tchaikovsky%2C_Pyotr)")
+	var (
+		url           []string
+		infor         [][]string
+		errmsg        = "imslp read error"
+		inputComposer string
+		inputSong     string
+	)
 
-	var url []string
-	var infor [][]string
+	for {
+		log.Println("enter the compoeser and song:")
+		fmt.Scanln(&inputComposer, &inputSong)
+		n := fmt.Sprint(inputComposer + inputSong)
+		if inputComposer == "exit" {
+			break
+		}
+		songURL, songName := search.Search(n)
+		log.Println(songName)
+		url = append(url, songURL)
 
-	file, _ := os.Open("./imslp.csv")
-
-	rdr := csv.NewReader(bufio.NewReader(file))
-	rdr.LazyQuotes = true
-
-	rows, errread := rdr.ReadAll()
-	errcheck.CheckError(errread, "errread")
-
-	for _, row := range rows {
-		url = append(url, row[0])
 	}
-	file.Close()
 
-	var errmsg = "imslp read error"
 	list := make(map[int]map[string]string)
 	for i, imslp := range url {
 		temp := strings.TrimSpace(imslp) + "#tabScore2"
@@ -40,7 +44,7 @@ func main() {
 		res := conn.ConnectTLS(temp, errmsg)
 
 		title, compose, style, instrument := crawler.IMSLPScrape(res)
-		log.Println(crawler.InstrScrape(res), i)
+		// log.Println(crawler.InstrScrape(res), i)
 
 		m := imslpparse.ParseInstr(instrument)
 		list[i] = m
@@ -49,4 +53,20 @@ func main() {
 		defer res.Body.Close()
 	}
 	createcsv.CreateCsv(infor, list)
+}
+
+func readCSV() {
+	file, _ := os.Open("./imslp.csv")
+
+	rdr := csv.NewReader(bufio.NewReader(file))
+	rdr.LazyQuotes = true
+
+	rows, errread := rdr.ReadAll()
+	log.Println(rows)
+	errcheck.CheckError(errread, "errread")
+
+	// for _, row := range rows {
+	// 	url = append(url, row[0])
+	// }
+	file.Close()
 }

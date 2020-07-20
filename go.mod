@@ -8,5 +8,5 @@ require (
 	github.com/djimenez/iconv-go v0.0.0-20160305225143-8960e66bd3da
 	github.com/jszwec/csvutil v1.3.0 // indirect
 	github.com/mattn/go-sqlite3 v1.14.0
-	github.com/rocketlaunchr/google-search v1.0.0 // indirect
+	github.com/rocketlaunchr/google-search v1.0.0
 )

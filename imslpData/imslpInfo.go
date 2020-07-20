@@ -31,6 +31,9 @@ type Instrument struct {
 	piano         string
 	timpani       string
 	harp          string
+	tambourine    string
+	cannon        string
+	bell          string
 }
 
 // Instruments array
