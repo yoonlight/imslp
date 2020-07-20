@@ -2,6 +2,7 @@ package crawler
 
 import (
 	errcheck "imslp/ErrorCheck"
+	"log"
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
@@ -44,6 +45,25 @@ func InstrScrape(res *http.Response) (instruments []string) {
 				instruments = append(instruments, instrument)
 			}
 		})
+	})
+	return
+}
+
+// GoogleSearch : opera 등등은 파트보를 크롤링함..
+func GoogleSearch(res *http.Response) (page string) {
+	doc, err := goquery.NewDocumentFromReader(res.Body)
+	errcheck.CheckError(err, "imslp data Read Error")
+	log.Println(doc.Find("div#search").Text())
+	log.Println(doc.Find("h3").AddClass(".LC20lb DKV0Md").First().Text())
+	doc.Find("div a").Each(func(i int, s *goquery.Selection) {
+		log.Println("들어옴")
+		// if s.HasClass(".g") == true {
+		page, exist := s.Attr("href")
+		if exist != false {
+			log.Println(page)
+		}
+		// }
+
 	})
 	return
 }
