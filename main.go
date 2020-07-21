@@ -57,8 +57,10 @@ func main() {
 	log.Println("Complete")
 }
 
-func readCSV() {
-	file, _ := os.Open("./imslp.csv")
+// existing file read
+func readCSV(input string) (url []string) {
+	title := "./" + input + ".csv"
+	file, _ := os.Open(title)
 
 	rdr := csv.NewReader(bufio.NewReader(file))
 	rdr.LazyQuotes = true
@@ -67,8 +69,11 @@ func readCSV() {
 	log.Println(rows)
 	errcheck.CheckError(errread, "errread")
 
-	// for _, row := range rows {
-	// 	url = append(url, row[0])
-	// }
+	for _, row := range rows {
+		songURL, songName := search.Search(row[0])
+		log.Println(songName)
+		url = append(url, songURL)
+	}
 	file.Close()
+	return
 }
