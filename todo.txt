@@ -6,8 +6,8 @@ to do list 형태에 csv export 가 들어가는 것도 괜찮은 방법일거 �
 계쇡은 프로그램처럼 실행시키구서 확인 할수 있게...!
 
 to do list 형태를 확인해보자.
-1. head: imslp 악기 제공사이트
-2. input: url을 input으로 하는게 제일 쉬운데 이렇게 하면 사용하는데 애로사항이 좀 있을거 같다. 고민좀 해보자.
+1. head: imslp 악기 정보 제공사이트
+2. input: url을 input으로 하는게 제일 쉬운데 이렇게 하면 사용하는데 애로사항이 좀 있을거 같다. 고민좀 해보자. => search 버튼 만듦.
 3. body: list, delete 기능도 만들어야겠지?
 4. foot: export: csv로 내보낼거임
 front: js(Vue 쓸래)
@@ -24,6 +24,13 @@ https://soyoung-new-challenge.tistory.com/93
 
 Complete
 1. song search code complete
+2. white space remove
 
 todo 
 1. 악기를 추가하게 되면 여러가지를 건들여야하는데 그거 문제가 있는거 같다. 어떻게 할지 구상이 필요할것으로 보임.
+2. goroutine 사용해야지.
+3. webpage 형태로 만들지 말고 gui 형태로 꾸며보자.
+4. 곡 정보가 여러개야.. 그러면 그거 다 넣어버리는게 나을거 같다.
+
+current situation
+imslpData, imslpSQL 사용안함. 참고하시길.

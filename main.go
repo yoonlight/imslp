@@ -18,12 +18,12 @@ func main() {
 	var (
 		url    []string
 		infor  [][]string
-		errmsg = "imslp read error"
 		input  string
+		errmsg = "imslp read error"
 	)
 
 	for {
-		log.Println("Enter the composer and Title")
+		log.Println("Enter the Composer and Title")
 		r := bufio.NewReader(os.Stdin)
 		input, _ = r.ReadString('\n')
 		s := strings.TrimSpace(input)
@@ -33,7 +33,6 @@ func main() {
 		songURL, songName := search.Search(input)
 		log.Println(songName)
 		url = append(url, songURL)
-
 	}
 
 	list := make(map[int]map[string]string)
@@ -51,7 +50,7 @@ func main() {
 		defer res.Body.Close()
 	}
 	createcsv.CreateCsv(infor, list)
-	log.Println("complete")
+	log.Println("Complete")
 }
 
 func readCSV() {

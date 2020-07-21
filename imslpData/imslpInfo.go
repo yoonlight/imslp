@@ -1,6 +1,6 @@
 package imslpdata
 
-// IMSLPInfo parse data
+// IMSLPInfo parse data 이거 사용안함.
 type IMSLPInfo struct {
 	title      string
 	compose    string
@@ -8,7 +8,7 @@ type IMSLPInfo struct {
 	instrument Instrument
 }
 
-// Instrument type is parsing instrument and save
+// Instrument type is parsing instrument and save 이거 사용안함.
 type Instrument struct {
 	strings       string
 	piccolo       string
@@ -36,10 +36,10 @@ type Instrument struct {
 	bell          string
 }
 
-// Instruments array
+// Instruments array 이거 사용안함.
 type Instruments []Instrument
 
-// WoodWind save
+// WoodWind save 이거 사용안함.
 type WoodWind struct {
 	piccolo       string
 	flute         string
@@ -51,7 +51,7 @@ type WoodWind struct {
 	contraBassoon string
 }
 
-// BrassWind save
+// BrassWind save 이거 사용안함.
 type BrassWind struct {
 	horn     string
 	trumpet  string
@@ -59,7 +59,7 @@ type BrassWind struct {
 	tuba     string
 }
 
-// Percussion save
+// Percussion save 이거 사용안함.
 type Percussion struct {
 	triangle  string
 	cymbals   string
@@ -71,7 +71,7 @@ type Percussion struct {
 	harp      string
 }
 
-// ImportInfo :
+// ImportInfo : 이거 사용안함.
 func ImportInfo(m map[string]string) (Instrument Instrument) {
 
 	Instrument.strings = "1"
