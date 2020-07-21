@@ -6,9 +6,9 @@ How to Use
 2. excute imslp.exe
 
 Code Review: current this program has dependency about these folders.
-connect
-crawler
-CreateCsv
-ErrorCheck
-imslpParse
-search
+  connect
+  crawler
+  CreateCsv
+  ErrorCheck
+  imslpParse
+  search
