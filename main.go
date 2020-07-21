@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
+	"fmt"
 	createcsv "imslp/CreateCsv"
 	errcheck "imslp/ErrorCheck"
 	conn "imslp/connect"
@@ -19,6 +20,7 @@ func main() {
 		url    []string
 		infor  [][]string
 		input  string
+		title  string
 		errmsg = "imslp read error"
 	)
 
@@ -49,7 +51,9 @@ func main() {
 		infor = append(infor, music)
 		defer res.Body.Close()
 	}
-	createcsv.CreateCsv(infor, list)
+	log.Println("Enter your csv file's Title")
+	fmt.Scanln(&title)
+	createcsv.CreateCsv(infor, list, title)
 	log.Println("Complete")
 }
 

@@ -8,13 +8,15 @@ import (
 )
 
 // CreateCsv : csv 파일 만들어줌.
-func CreateCsv(infor [][]string, list map[int]map[string]string) {
+func CreateCsv(infor [][]string, list map[int]map[string]string, csvTitle string) {
 	var (
 		title   string
 		compose string
 		style   string
+		csvs    string
 	)
-	file, errc := os.Create("./lumiere.csv")
+	csvs = "./" + csvTitle + ".csv"
+	file, errc := os.Create(csvs)
 	errcheck.CheckError(errc, "")
 	// csv writer 생성
 	wr := csv.NewWriter(bufio.NewWriter(file))
