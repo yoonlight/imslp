@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"encoding/csv"
-	"fmt"
 	createcsv "imslp/CreateCsv"
 	errcheck "imslp/ErrorCheck"
 	conn "imslp/connect"
@@ -17,21 +16,21 @@ import (
 
 func main() {
 	var (
-		url           []string
-		infor         [][]string
-		errmsg        = "imslp read error"
-		inputComposer string
-		inputSong     string
+		url    []string
+		infor  [][]string
+		errmsg = "imslp read error"
+		input  string
 	)
 
 	for {
-		log.Println("enter the compoeser and song:")
-		fmt.Scanln(&inputComposer, &inputSong)
-		n := fmt.Sprint(inputComposer + inputSong)
-		if inputComposer == "exit" {
+		log.Println("Enter the composer and Title")
+		r := bufio.NewReader(os.Stdin)
+		input, _ = r.ReadString('\n')
+		s := strings.TrimSpace(input)
+		if s == "exit" {
 			break
 		}
-		songURL, songName := search.Search(n)
+		songURL, songName := search.Search(input)
 		log.Println(songName)
 		url = append(url, songURL)
 
@@ -44,7 +43,6 @@ func main() {
 		res := conn.ConnectTLS(temp, errmsg)
 
 		title, compose, style, instrument := crawler.IMSLPScrape(res)
-		// log.Println(crawler.InstrScrape(res), i)
 
 		m := imslpparse.ParseInstr(instrument)
 		list[i] = m
@@ -53,6 +51,7 @@ func main() {
 		defer res.Body.Close()
 	}
 	createcsv.CreateCsv(infor, list)
+	log.Println("complete")
 }
 
 func readCSV() {
