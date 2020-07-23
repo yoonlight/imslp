@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	createcsv "imslp/CreateCsv"
 	conn "imslp/connect"
 	"imslp/crawler"
@@ -12,6 +13,7 @@ import (
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/dialog"
+	"fyne.io/fyne/layout"
 	"fyne.io/fyne/widget"
 )
 
@@ -24,12 +26,13 @@ func main() {
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
 	myWindow.Resize(fyne.NewSize(640, 480))
-
-	content := widget.NewVBox()
 	vbox := widget.NewVBox()
+	scroller := widget.NewVScrollContainer(vbox)
+	content := widget.NewVBox(fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, nil, nil, nil), scroller))
 	entry := widget.NewEntry()
 	entry.PlaceHolder = "Tchaikovsky Symphony No.5"
 	itemTitle := widget.NewLabel("Title")
+	itemTitle.Alignment = fyne.TextAlignCenter
 
 	button := widget.NewButton("Enter the Composer and Title", func() {
 		if entry.Text != "" {
@@ -37,7 +40,12 @@ func main() {
 			log.Println(songName)
 			log.Println(songURL)
 			url = append(url, songURL)
-			vbox.Append(widget.NewLabel(songName))
+			hbox := widget.NewHBox()
+			check := widget.NewCheck("Check", func(on bool) { fmt.Println("checked", on) })
+			// check.Move(content.Position().Subtract())
+			hbox.Append(widget.NewLabel(songName))
+			hbox.Append(check)
+			vbox.Append(hbox)
 		}
 	})
 	export := widget.NewButton("Export CSV", func() {
@@ -60,6 +68,7 @@ func main() {
 		dialog.ShowCustomConfirm("Enter your csv file's Title", "Submit", "Cancel", content, func(b bool) {
 			log.Println("Enter your csv file's Title")
 			if !b {
+				log.Println("Cancle")
 				return
 			}
 			createcsv.CreateCsv(infor, list, title.Text)
@@ -70,7 +79,10 @@ func main() {
 	content.Append(button)
 	content.Append(itemTitle)
 	content.Append(vbox)
+	content.Append(layout.NewSpacer())
 	content.Append(export)
+	content.Show()
+
 	myWindow.SetContent(content)
 	myWindow.ShowAndRun()
 }
