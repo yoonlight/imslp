@@ -1,82 +1,76 @@
 package main
 
 import (
+	createcsv "imslp/CreateCsv"
+	conn "imslp/connect"
+	"imslp/crawler"
+	imslpparse "imslp/imslpParse"
 	"imslp/search"
 	"log"
+	"strings"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
-	"fyne.io/fyne/layout"
-
-	//"fyne.io/fyne/theme"
+	"fyne.io/fyne/dialog"
 	"fyne.io/fyne/widget"
 )
 
 func main() {
-	app := app.New() //app 선언
-	//app.Settings().SetTheme(theme.LightTheme()) //밝은 테마 설정
+	var (
+		url    []string
+		infor  [][]string
+		errmsg = "imslp read error"
+	)
+	myApp := app.New()
+	myWindow := myApp.NewWindow("IMSLP")
+	myWindow.Resize(fyne.NewSize(640, 480))
 
-	w := app.NewWindow("IMSLP Instrument Parsing") //window 선언
+	content := widget.NewVBox()
+	vbox := widget.NewVBox()
 	entry := widget.NewEntry()
-	entry.SetPlaceHolder("Tchaikovsky symphony no.5")
-	var data [][]string
-	hbox := widget.NewHBox(
-		entry, //엔트리 (문자열 입력)
-		widget.NewButton("Add", func() { //종료버튼
+	entry.PlaceHolder = "Tchaikovsky Symphony No.5"
+	itemTitle := widget.NewLabel("Title")
+
+	button := widget.NewButton("Enter the Composer and Title", func() {
+		if entry.Text != "" {
 			songURL, songName := search.Search(entry.Text)
-			log.Println(songURL)
 			log.Println(songName)
-			data = [][]string{{songName, songURL}}
-			// url = append(url, songURL)
-		}),
-	)
-	w.SetContent(
-		widget.NewVBox(
-			widget.NewLabel("IMSLP Instrument Parsing"), //레이블
-			widget.NewHBox(
-				entry, //엔트리 (문자열 입력)
-				widget.NewButton("Add", func() { //종료버튼
-					songURL, songName := search.Search(entry.Text)
-					log.Println(songURL)
-					log.Println(songName)
-					data = [][]string{{songName, songURL}}
-					widget.Refresh(hbox)
-					// url = append(url, songURL)
-				}),
-			),
-			makeTable( //makeTable함수를 사용하여 테이블 선언 및 변수 입력
-				[]string{"Title", "URL"}, //칼럼(헤더)
-				data,                     //데이터
-			),
-		),
-	)
-	w.Resize(fyne.NewSize(600, 600))
-	w.ShowAndRun()
-}
-
-func makeTable(headings []string, rows [][]string) *widget.Box {
-
-	columns := rowsToColumns(headings, rows)
-
-	objects := make([]fyne.CanvasObject, len(columns))
-	for k, col := range columns {
-		box := widget.NewVBox(widget.NewLabelWithStyle(headings[k], fyne.TextAlignLeading, fyne.TextStyle{Bold: true}))
-		for _, val := range col {
-			box.Append(widget.NewLabel(val))
+			log.Println(songURL)
+			url = append(url, songURL)
+			vbox.Append(widget.NewLabel(songName))
 		}
-		objects[k] = box
-	}
-	return widget.NewVBox(
-		fyne.NewContainerWithLayout(layout.NewGridLayout(len(columns)), objects...),
-	)
-}
+	})
+	export := widget.NewButton("Export CSV", func() {
+		list := make(map[int]map[string]string)
+		for i, imslp := range url {
+			temp := strings.TrimSpace(imslp) + "#tabScore2"
+			log.Println(temp)
+			res := conn.ConnectTLS(temp, errmsg)
 
-func rowsToColumns(headings []string, rows [][]string) [][]string {
-	columns := make([][]string, len(headings))
-	for _, row := range rows {
-		for colK := range row {
-			columns[colK] = append(columns[colK], row[colK])
+			title, compose, style, instrument := crawler.IMSLPScrape(res)
+
+			m := imslpparse.ParseInstr(instrument)
+			list[i] = m
+			music := []string{title, compose, style}
+			infor = append(infor, music)
+			defer res.Body.Close()
 		}
-	}
-	return columns
+		title := widget.NewEntry()
+		content := widget.NewForm(widget.NewFormItem("Title", title))
+		dialog.ShowCustomConfirm("Enter your csv file's Title", "Submit", "Cancel", content, func(b bool) {
+			log.Println("Enter your csv file's Title")
+			if !b {
+				return
+			}
+			createcsv.CreateCsv(infor, list, title.Text)
+			log.Println("Complete")
+		}, myWindow)
+	})
+	content.Append(entry)
+	content.Append(button)
+	content.Append(itemTitle)
+	content.Append(vbox)
+	content.Append(export)
+	myWindow.SetContent(content)
+	myWindow.ShowAndRun()
 }
