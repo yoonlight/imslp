@@ -1,11 +1,11 @@
-package imslpdata
+package imdata
 
 // IMSLPInfo parse data 이거 사용안함.
 type IMSLPInfo struct {
-	title      string
-	compose    string
-	style      string
-	instrument Instrument
+	Title   string
+	Compose string
+	Style   string
+	Instr   string
 }
 
 // Instrument type is parsing instrument and save 이거 사용안함.
@@ -39,8 +39,8 @@ type Instrument struct {
 // Instruments array 이거 사용안함.
 type Instruments []Instrument
 
-// WoodWind save 이거 사용안함.
-type WoodWind struct {
+// Wood save 이거 사용안함.
+type Wood struct {
 	piccolo       string
 	flute         string
 	oboe          string
@@ -51,16 +51,16 @@ type WoodWind struct {
 	contraBassoon string
 }
 
-// BrassWind save 이거 사용안함.
-type BrassWind struct {
+// Brass save 이거 사용안함.
+type Brass struct {
 	horn     string
 	trumpet  string
 	trombone string
 	tuba     string
 }
 
-// Percussion save 이거 사용안함.
-type Percussion struct {
+// Perc save 이거 사용안함.
+type Perc struct {
 	triangle  string
 	cymbals   string
 	bassDrum  string

@@ -8,7 +8,9 @@ import (
 	errcheck "imslp/ErrorCheck"
 	conn "imslp/connect"
 	"imslp/crawler"
-	imslpparse "imslp/imslpParse"
+	imdata "imslp/imslpData"
+	imparse "imslp/imslpParse"
+	"imslp/input"
 	"imslp/search"
 	"log"
 	"os"
@@ -17,37 +19,37 @@ import (
 
 func main() {
 	var (
-		url    []string
 		infor  [][]string
-		input  string
+		in     string
 		title  string
 		errmsg = "imslp read error"
+		lists  []input.List
+		id     = 0
+		imData imdata.IMSLPInfo
 	)
 
 	for {
 		log.Println("Enter the Composer and Title")
 		r := bufio.NewReader(os.Stdin)
-		input, _ = r.ReadString('\n')
-		s := strings.TrimSpace(input)
+		in, _ = r.ReadString('\n')
+		s := strings.TrimSpace(in)
 		if s == "exit" {
 			break
 		}
-		songURL, songName := search.Search(input)
-		log.Println(songName)
-		url = append(url, songURL)
+		lists = append(lists, input.Input(s, id))
+		id++
 	}
 
 	list := make(map[int]map[string]string)
-	for i, imslp := range url {
-		temp := strings.TrimSpace(imslp) + "#tabScore2"
+	for i, imslp := range lists {
+		temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
 
-		title, compose, style, instrument := crawler.IMSLPScrape(res)
-
-		m := imslpparse.ParseInstr(instrument)
+		imData = crawler.IMSLPScrape(res)
+		m := imparse.ParseInstr(imData.Instr)
 		list[i] = m
-		music := []string{title, compose, style}
+		music := []string{imData.Title, imData.Compose, imData.Style}
 		infor = append(infor, music)
 		defer res.Body.Close()
 	}
