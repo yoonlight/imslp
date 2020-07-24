@@ -8,7 +8,8 @@ type IMSLPInfo struct {
 	Instr   string
 }
 
-type instr struct {
+// Instr :using json
+type Instr struct {
 	Strings string `json:"strings"`
 	Wood    Wood   `json:"wood"`
 	Brass   Brass  `json:"brass"`
@@ -37,14 +38,17 @@ type Brass struct {
 
 // Perc save 이거 사용안함.
 type Perc struct {
-	Triangle  string `json:"triangle"`
-	Cymbals   string `json:"cymbal"`
-	BassDrum  string `json:"bass drum"`
-	SnareDrum string `json:"snare drum"`
-	Organ     string `json:"organ"`
-	Piano     string `json:"piano"`
-	Timpani   string `json:"timpani"`
-	Harp      string `json:"harp"`
+	Triangle   string `json:"triangle"`
+	Cymbals    string `json:"cymbal"`
+	BassDrum   string `json:"bass drum"`
+	SnareDrum  string `json:"snare drum"`
+	Organ      string `json:"organ"`
+	Piano      string `json:"piano"`
+	Timpani    string `json:"timpani"`
+	Harp       string `json:"harp"`
+	Tambourine string `json:"tambourine"`
+	Bells      string `json:"bells"`
+	Cannon     string `json:"cannon"`
 }
 
 // Instrument type is parsing instrument and save 이거 사용안함.

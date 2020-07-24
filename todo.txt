@@ -15,4 +15,5 @@ To do
 7. opera 등의 곡은 따로 parsing fuction 사용할수 있게 하기.
 8. ui에 추가할 부분: 옳지 않은 정보가 들어왔을때 다시 입력하세요 toaster 필요.
 9. imslp instr data를 json으로 받아보자. map 을 사용하고 있지만.... key-value는 같은 구조를 사용하고 있게 더 편할지도.
+why json? data 를 추가할일이 있으면 json 값 추가이외에는 최대한 다른 코드를 건들지 않게 하기 위함이다.
 
