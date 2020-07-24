@@ -9,9 +9,12 @@ How to Use
 5. Now, you can use csv file.
 
 Code Review: current this program has dependency about these folders.
-1. connect
-2. crawler
-3. CreateCsv
-4. ErrorCheck
-5. imslpParse
-6. search
+1. app: gui
+2. connect: connect to http
+3. crawler: crawling IMSLP Information
+4. createCsv: create csv file
+5. errorCheck: error check
+6. imslpData: imslp data struct
+7. imslpParse: imslp data parsing 
+8. input: composer and title information input
+9. search: search the exact song title and imslp url from google
