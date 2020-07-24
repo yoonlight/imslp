@@ -15,6 +15,7 @@ import (
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/dialog"
 	"fyne.io/fyne/layout"
+	"fyne.io/fyne/storage"
 	"fyne.io/fyne/widget"
 )
 
@@ -72,6 +73,19 @@ func main() {
 		}
 	})
 	load := widget.NewButton("Load don't use", func() {
+		fd := dialog.NewFileOpen(func(reader fyne.URIReadCloser, err error) {
+			if err == nil && reader == nil {
+				return
+			}
+			if err != nil {
+				dialog.ShowError(err, myWindow)
+				return
+			}
+
+			fileOpened(reader)
+		}, myWindow)
+		fd.SetFilter(storage.NewExtensionFileFilter([]string{".csv"}))
+		fd.Show()
 		log.Println("load")
 		rows := pkgcsv.ReadCsv("hello.csv")
 		for _, arr := range rows {
@@ -134,4 +148,22 @@ func main() {
 
 	myWindow.SetContent(content)
 	myWindow.ShowAndRun()
+}
+
+func fileOpened(f fyne.URIReadCloser) {
+	if f == nil {
+		log.Println("Cancelled")
+		return
+	}
+
+	// ext := f.URI().Extension()
+	// if ext == ".png" {
+	// 	showImage(f)
+	// } else if ext == ".txt" {
+	// 	showText(f)
+	// }
+	err := f.Close()
+	if err != nil {
+		fyne.LogError("Failed to close stream", err)
+	}
 }
