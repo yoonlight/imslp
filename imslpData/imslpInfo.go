@@ -8,6 +8,45 @@ type IMSLPInfo struct {
 	Instr   string
 }
 
+type instr struct {
+	Strings string `json:"strings"`
+	Wood    Wood   `json:"wood"`
+	Brass   Brass  `json:"brass"`
+	Perc    Perc   `json:"perc"`
+}
+
+// Wood save 이거 사용안함.
+type Wood struct {
+	Piccolo       string `json:"piccolo"`
+	Flute         string `json:"flute"`
+	Oboe          string `json:"oboe"`
+	EnglishHorn   string `json:"english horn"`
+	Clarinet      string `json:"clarinet"`
+	BassClarinet  string `json:"bass clarinet"`
+	Bassoon       string `json:"bassoon"`
+	ContraBassoon string `json:"contra bassoon"`
+}
+
+// Brass save 이거 사용안함.
+type Brass struct {
+	Horn     string `json:"horn"`
+	Trumpet  string `json:"trumpet"`
+	Trombone string `json:"trombone"`
+	Tuba     string `json:"tuba"`
+}
+
+// Perc save 이거 사용안함.
+type Perc struct {
+	Triangle  string `json:"triangle"`
+	Cymbals   string `json:"cymbal"`
+	BassDrum  string `json:"bass drum"`
+	SnareDrum string `json:"snare drum"`
+	Organ     string `json:"organ"`
+	Piano     string `json:"piano"`
+	Timpani   string `json:"timpani"`
+	Harp      string `json:"harp"`
+}
+
 // Instrument type is parsing instrument and save 이거 사용안함.
 type Instrument struct {
 	strings       string
@@ -34,41 +73,6 @@ type Instrument struct {
 	tambourine    string
 	cannon        string
 	bell          string
-}
-
-// Instruments array 이거 사용안함.
-type Instruments []Instrument
-
-// Wood save 이거 사용안함.
-type Wood struct {
-	piccolo       string
-	flute         string
-	oboe          string
-	englishHorn   string
-	clarinet      string
-	bassClarinet  string
-	bassoon       string
-	contraBassoon string
-}
-
-// Brass save 이거 사용안함.
-type Brass struct {
-	horn     string
-	trumpet  string
-	trombone string
-	tuba     string
-}
-
-// Perc save 이거 사용안함.
-type Perc struct {
-	triangle  string
-	cymbals   string
-	bassDrum  string
-	snareDrum string
-	organ     string
-	piano     string
-	timpani   string
-	harp      string
 }
 
 // ImportInfo : 이거 사용안함.
