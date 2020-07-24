@@ -8,7 +8,7 @@ How to Use
 4. If you complete to enter, enter the exit
 5. Now, you can use csv file.
 
-Code Review: current this program has dependency about these folders.
+Library: current this program has dependency about these folders.
 1. app: gui
 2. connect: connect to http
 3. crawler: crawling IMSLP Information
