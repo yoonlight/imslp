@@ -26,6 +26,7 @@ Complete
 1. song search code complete
 2. white space remove
 3. add method to require csv file's title
+4. make gui program
 
 todo 
 0. 악기 데이터 세분화 필요..
@@ -35,14 +36,18 @@ todo
 4. 곡 정보가 여러개야.. 그러면 그거 다 넣어버리는게 나을거 같다.
 5. history read :read existing csv file
 6. csv 완성후 list 초기화
+7. opera 등의 곡은 따로 parsing fuction 사용할수 있게 하기.
 
 current situation
 imslpData, imslpSQL 사용안함. 참고하시길. 
 
-GUI는 크게 3부분임.
+GUI는 크게 3부분임. -> 필요하면 기능 계속 추가함.
 1. input, search-> search lib.
 2. body(list)-> main.go
 3. foot(export)-> createCSV lib.
-+ delete
+4. delete
+5. load
 
 ui에 추가할 부분: 옳지 않은 정보가 들어왔을때 다시 입력하세요 toaster 필요.
+toaster 넣어야함.
+
