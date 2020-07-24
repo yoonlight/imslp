@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	createcsv "imslp/CreateCsv"
+	pkgcsv "imslp/CreateCsv"
 	conn "imslp/connect"
 	"imslp/crawler"
 	imdata "imslp/imslpData"
@@ -71,6 +71,29 @@ func main() {
 			i++
 		}
 	})
+	load := widget.NewButton("Load don't use", func() {
+		log.Println("load")
+		rows := pkgcsv.ReadCsv("hello.csv")
+		for _, arr := range rows {
+			if arr[0] == "Title" {
+				continue
+			}
+			num := id
+			data = input.Input(arr[1]+" "+arr[0], num)
+			lists = append(lists, data)
+			hbox := widget.NewHBox()
+			label = append(label, widget.NewLabel(lists[num].Title))
+			check := widget.NewCheck("Check", func(on bool) {
+				lists[num].IsDel = on
+				fmt.Println("checked", lists[num].IsDel)
+			})
+			checks = append(checks, check)
+			hbox.Append(label[num])
+			hbox.Append(checks[num])
+			vbox.Append(hbox)
+			id++
+		}
+	})
 	export := widget.NewButton("Export CSV", func() {
 		list := make(map[int]map[string]string)
 		i := 0
@@ -95,7 +118,7 @@ func main() {
 				log.Println("Cancle")
 				return
 			}
-			createcsv.CreateCsv(music, list, "./"+title.Text+".csv")
+			pkgcsv.CreateCsv(music, list, "./"+title.Text+".csv")
 			log.Println("Complete")
 		}, myWindow)
 	})
@@ -105,6 +128,7 @@ func main() {
 	content.Append(vbox)
 	content.Append(layout.NewSpacer())
 	content.Append(delete)
+	content.Append(load)
 	content.Append(export)
 	content.Show()
 
