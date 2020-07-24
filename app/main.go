@@ -5,8 +5,9 @@ import (
 	createcsv "imslp/CreateCsv"
 	conn "imslp/connect"
 	"imslp/crawler"
+	imdata "imslp/imslpData"
 	imslpparse "imslp/imslpParse"
-	"imslp/search"
+	"imslp/input"
 	"log"
 	"strings"
 
@@ -19,9 +20,12 @@ import (
 
 func main() {
 	var (
-		url    []string
+		id     = 0
+		data   input.List
+		lists  []input.List
 		infor  [][]string
 		errmsg = "imslp read error"
+		imData imdata.IMSLPInfo
 	)
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
@@ -36,30 +40,27 @@ func main() {
 
 	button := widget.NewButton("Enter the Composer and Title", func() {
 		if entry.Text != "" {
-			songURL, songName := search.Search(entry.Text)
-			log.Println(songName)
-			log.Println(songURL)
-			url = append(url, songURL)
+			data = input.Input(entry.Text, id)
+			lists = append(lists, data)
 			hbox := widget.NewHBox()
-			check := widget.NewCheck("Check", func(on bool) { fmt.Println("checked", on) })
-			// check.Move(content.Position().Subtract())
-			hbox.Append(widget.NewLabel(songName))
+			on := &lists[id].IsDel
+			check := widget.NewCheck("Check", func(bool) { fmt.Println("checked", on) })
+			hbox.Append(widget.NewLabel(lists[id].Title))
 			hbox.Append(check)
 			vbox.Append(hbox)
+			id++
 		}
 	})
 	export := widget.NewButton("Export CSV", func() {
 		list := make(map[int]map[string]string)
-		for i, imslp := range url {
-			temp := strings.TrimSpace(imslp) + "#tabScore2"
+		for i, imslp := range lists {
+			temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
 			log.Println(temp)
 			res := conn.ConnectTLS(temp, errmsg)
-
-			title, compose, style, instrument := crawler.IMSLPScrape(res)
-
-			m := imslpparse.ParseInstr(instrument)
+			imData = crawler.IMSLPScrape(res)
+			m := imslpparse.ParseInstr(imData.Instr)
 			list[i] = m
-			music := []string{title, compose, style}
+			music := []string{imData.Title, imData.Compose, imData.Style}
 			infor = append(infor, music)
 			defer res.Body.Close()
 		}
