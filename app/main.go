@@ -26,6 +26,8 @@ func main() {
 		infor  [][]string
 		errmsg = "imslp read error"
 		imData imdata.IMSLPInfo
+		label  []*widget.Label
+		checks []*widget.Check
 	)
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
@@ -40,15 +42,35 @@ func main() {
 
 	button := widget.NewButton("Enter the Composer and Title", func() {
 		if entry.Text != "" {
-			data = input.Input(entry.Text, id)
+			num := id
+			data = input.Input(entry.Text, num)
 			lists = append(lists, data)
 			hbox := widget.NewHBox()
-			on := &lists[id].IsDel
-			check := widget.NewCheck("Check", func(bool) { fmt.Println("checked", on) })
-			hbox.Append(widget.NewLabel(lists[id].Title))
-			hbox.Append(check)
+			label = append(label, widget.NewLabel(lists[num].Title))
+			check := widget.NewCheck("Check", func(on bool) {
+				lists[num].IsDel = on
+				fmt.Println("checked", lists[num].IsDel)
+			})
+			checks = append(checks, check)
+			hbox.Append(label[num])
+			hbox.Append(checks[num])
 			vbox.Append(hbox)
 			id++
+		}
+	})
+	delete := widget.NewButton("Delete", func() {
+		log.Println("delete")
+		i := 0
+		for i < id {
+			log.Println(i, id, "hello world!")
+			if lists[i].IsDel == true {
+				log.Println(i, id, "hello world!")
+				label[i].Hide()
+				checks[i].Hide()
+				i++
+			} else {
+				break
+			}
 		}
 	})
 	export := widget.NewButton("Export CSV", func() {
@@ -64,6 +86,7 @@ func main() {
 			infor = append(infor, music)
 			defer res.Body.Close()
 		}
+
 		title := widget.NewEntry()
 		content := widget.NewForm(widget.NewFormItem("Title", title))
 		dialog.ShowCustomConfirm("Enter your csv file's Title", "Submit", "Cancel", content, func(b bool) {
@@ -81,6 +104,7 @@ func main() {
 	content.Append(itemTitle)
 	content.Append(vbox)
 	content.Append(layout.NewSpacer())
+	content.Append(delete)
 	content.Append(export)
 	content.Show()
 

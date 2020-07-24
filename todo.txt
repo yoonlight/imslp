@@ -42,5 +42,6 @@ GUI는 크게 3부분임.
 1. input, search-> search lib.
 2. body(list)-> main.go
 3. foot(export)-> createCSV lib.
++ delete
 
 ui에 추가할 부분: 옳지 않은 정보가 들어왔을때 다시 입력하세요 toaster 필요.
