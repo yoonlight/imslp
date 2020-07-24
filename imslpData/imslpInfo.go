@@ -1,6 +1,6 @@
 package imdata
 
-// IMSLPInfo parse data 이거 사용안함.
+// IMSLPInfo parse data
 type IMSLPInfo struct {
 	Title   string
 	Compose string

@@ -23,18 +23,19 @@ func main() {
 		id     = 0
 		data   input.List
 		lists  []input.List
-		infor  [][]string
 		errmsg = "imslp read error"
 		imData imdata.IMSLPInfo
 		label  []*widget.Label
 		checks []*widget.Check
+		music  []imdata.IMSLPInfo
 	)
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
 	myWindow.Resize(fyne.NewSize(640, 480))
 	vbox := widget.NewVBox()
-	scroller := widget.NewVScrollContainer(vbox)
-	content := widget.NewVBox(fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, nil, nil, nil), scroller))
+	// scroller := widget.NewVScrollContainer(vbox)
+	// fyne.NewContainerWithLayout(layout.NewBorderLayout(nil, nil, nil, nil), scroller)
+	content := widget.NewVBox()
 	entry := widget.NewEntry()
 	entry.PlaceHolder = "Tchaikovsky Symphony No.5"
 	itemTitle := widget.NewLabel("Title")
@@ -62,31 +63,30 @@ func main() {
 		log.Println("delete")
 		i := 0
 		for i < id {
-			log.Println(i, id, "hello world!")
 			if lists[i].IsDel == true {
-				log.Println(i, id, "hello world!")
+				log.Println("delete", lists[i].Title)
 				label[i].Hide()
 				checks[i].Hide()
-				i++
-			} else {
-				break
 			}
+			i++
 		}
 	})
 	export := widget.NewButton("Export CSV", func() {
 		list := make(map[int]map[string]string)
-		for i, imslp := range lists {
-			temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
-			log.Println(temp)
-			res := conn.ConnectTLS(temp, errmsg)
-			imData = crawler.IMSLPScrape(res)
-			m := imslpparse.ParseInstr(imData.Instr)
-			list[i] = m
-			music := []string{imData.Title, imData.Compose, imData.Style}
-			infor = append(infor, music)
-			defer res.Body.Close()
+		i := 0
+		for _, imslp := range lists {
+			if imslp.IsDel != true {
+				temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
+				log.Println(temp)
+				res := conn.ConnectTLS(temp, errmsg)
+				imData = crawler.IMSLPScrape(res)
+				m := imslpparse.ParseInstr(imData.Instr)
+				list[i] = m
+				music = append(music, imData)
+				defer res.Body.Close()
+				i++
+			}
 		}
-
 		title := widget.NewEntry()
 		content := widget.NewForm(widget.NewFormItem("Title", title))
 		dialog.ShowCustomConfirm("Enter your csv file's Title", "Submit", "Cancel", content, func(b bool) {
@@ -95,7 +95,7 @@ func main() {
 				log.Println("Cancle")
 				return
 			}
-			createcsv.CreateCsv(infor, list, title.Text)
+			createcsv.CreateCsv(music, list, "./"+title.Text+".csv")
 			log.Println("Complete")
 		}, myWindow)
 	})

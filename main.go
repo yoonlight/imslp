@@ -19,13 +19,13 @@ import (
 
 func main() {
 	var (
-		infor  [][]string
 		in     string
 		title  string
 		errmsg = "imslp read error"
 		lists  []input.List
 		id     = 0
 		imData imdata.IMSLPInfo
+		music  []imdata.IMSLPInfo
 	)
 
 	for {
@@ -49,13 +49,12 @@ func main() {
 		imData = crawler.IMSLPScrape(res)
 		m := imparse.ParseInstr(imData.Instr)
 		list[i] = m
-		music := []string{imData.Title, imData.Compose, imData.Style}
-		infor = append(infor, music)
+		music = append(music, imData)
 		defer res.Body.Close()
 	}
 	log.Println("Enter your csv file's Title")
 	fmt.Scanln(&title)
-	createcsv.CreateCsv(infor, list, title)
+	createcsv.CreateCsv(music, list, "./"+title+".csv")
 	log.Println("Complete")
 }
 
