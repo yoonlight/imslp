@@ -2,16 +2,13 @@ package main
 
 import (
 	"bufio"
-	"encoding/csv"
 	"fmt"
 	createcsv "imslp/CreateCsv"
-	errcheck "imslp/ErrorCheck"
 	conn "imslp/connect"
 	"imslp/crawler"
 	imdata "imslp/imslpData"
 	imparse "imslp/imslpParse"
 	"imslp/input"
-	"imslp/search"
 	"log"
 	"os"
 	"strings"
@@ -56,25 +53,4 @@ func main() {
 	fmt.Scanln(&title)
 	createcsv.CreateCsv(music, list, "./"+title+".csv")
 	log.Println("Complete")
-}
-
-// existing file read
-func readCSV(input string) (url []string) {
-	title := "./" + input + ".csv"
-	file, _ := os.Open(title)
-
-	rdr := csv.NewReader(bufio.NewReader(file))
-	rdr.LazyQuotes = true
-
-	rows, errread := rdr.ReadAll()
-	log.Println(rows)
-	errcheck.CheckError(errread, "errread")
-
-	for _, row := range rows {
-		songURL, songName := search.Search(row[0])
-		log.Println(songName)
-		url = append(url, songURL)
-	}
-	file.Close()
-	return
 }

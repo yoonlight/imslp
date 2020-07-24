@@ -26,8 +26,3 @@ func Input(input string, id int) (data List) {
 	}
 	return
 }
-
-// History of data file read
-func History() {
-
-}

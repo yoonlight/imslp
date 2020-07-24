@@ -1,4 +1,4 @@
-package createcsv
+package csvpkg
 
 import (
 	"bufio"
@@ -21,4 +21,18 @@ func CreateCsv(music []imdata.IMSLPInfo, list map[int]map[string]string, csvTitl
 			m["snare drum"], m["organ"], m["piano"], m["timpani"], m["harp"], m["tambourine"], m["cannon"], m["bells"]})
 		wr.Flush()
 	}
+}
+
+// ReadCsv 's purpose is existing data read through app's load btn.
+func ReadCsv(csvTitle string) (rows [][]string) {
+	file, _ := os.Open(csvTitle)
+
+	rdr := csv.NewReader(bufio.NewReader(file))
+	rdr.LazyQuotes = true
+
+	rows, readerr := rdr.ReadAll()
+	errcheck.CheckError(readerr, "csv read err")
+
+	file.Close()
+	return
 }
