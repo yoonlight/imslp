@@ -5,8 +5,8 @@ type IMSLPInfo struct {
 	Title   string `json:"title"`
 	Compose string `json:"compose"`
 	Style   string `json:"style"`
-	// Instr   string `json:"instrument"`
-	Instrs Instr
+	Instr   string `json:"instrument"`
+	Instrs  Instr
 }
 
 // Instr :using json
