@@ -34,11 +34,11 @@ func IMSLPScrape(res *http.Response) (imData imdata.IMSLPInfo) {
 }
 
 // InstrScrape : opera 등등은 파트보를 크롤링함..
-func InstrScrape(res *http.Response) (instruments []string) {
+func InstrScrape(res *http.Response) (instruments []string, title []string) {
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	errcheck.CheckError(err, "imslp data Read Error")
 	doc.Find("div#tabScore2").AddClass(".jq-ui-tabs-panel ui-widget-content ui-corner-bottom").Each(func(i int, s *goquery.Selection) {
-
+		title = append(title, s.Find("h4").Text())
 		s.Find("a").AddClass(".eternal text").Each(func(i int, x *goquery.Selection) {
 			instrument := x.Find("span").RemoveClass(".we_file_dlarrwrap").Text()
 			if instrument != "" {
