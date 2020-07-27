@@ -3,7 +3,7 @@ package csvpkg
 import (
 	"bufio"
 	"encoding/csv"
-	errcheck "imslp/ErrorCheck"
+	"imslp/errcheck"
 	imdata "imslp/imslpData"
 	"os"
 )

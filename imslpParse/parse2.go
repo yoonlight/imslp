@@ -14,19 +14,18 @@ func ParseInstr2(instrument string) (m imdata.Instr) {
 	for _, match := range re.FindAllStringSubmatch(instrument, -1) {
 		num := strconv.Itoa(1)
 		name := match[0]
-		m = caseParse2(num, name)
-
+		m = caseParse2(num, name, m)
 	}
 	var re2 = regexp.MustCompile(reg2)
 	for _, match := range re2.FindAllStringSubmatch(instrument, -1) {
 		num := match[1]
 		name := match[2]
-		m = caseParse2(num, name)
+		m = caseParse2(num, name, m)
 	}
 	return m
 }
 
-func caseParse2(num string, name string) (m imdata.Instr) {
+func caseParse2(num string, name string, m imdata.Instr) imdata.Instr {
 	switch name {
 	case "piccolo":
 		m.Wood.Piccolo = num
@@ -75,6 +74,6 @@ func caseParse2(num string, name string) (m imdata.Instr) {
 	case "cannon":
 		m.Perc.Cannon = num
 	}
-	return
+	return m
 
 }

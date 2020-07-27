@@ -2,7 +2,7 @@ package conn
 
 import (
 	"crypto/tls"
-	errcheck "imslp/ErrorCheck"
+	"imslp/errcheck"
 	"log"
 	"net/http"
 )

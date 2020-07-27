@@ -2,10 +2,11 @@ package imdata
 
 // IMSLPInfo parse data
 type IMSLPInfo struct {
-	Title   string
-	Compose string
-	Style   string
-	Instr   string
+	Title   string `json:"title"`
+	Compose string `json:"compose"`
+	Style   string `json:"style"`
+	Instr   string `json:"instrument"`
+	Instrs  Instr
 }
 
 // Instr :using json
@@ -38,13 +39,13 @@ type Brass struct {
 
 // Perc save 이거 사용안함.
 type Perc struct {
+	Timpani    string `json:"timpani"`
 	Triangle   string `json:"triangle"`
 	Cymbals    string `json:"cymbal"`
 	BassDrum   string `json:"bass drum"`
 	SnareDrum  string `json:"snare drum"`
 	Organ      string `json:"organ"`
 	Piano      string `json:"piano"`
-	Timpani    string `json:"timpani"`
 	Harp       string `json:"harp"`
 	Tambourine string `json:"tambourine"`
 	Bells      string `json:"bells"`

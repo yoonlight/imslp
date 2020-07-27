@@ -1,0 +1,230 @@
+[
+    {
+      "title": "Symphony No.1\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": "Orchestra: piccolo, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons,4 horns, 2 trumpet, 3 trombones, tuba, timpani, cymbals, bass drum, strings\n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "2 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "",
+          "cymbal": "1",
+          "bass drum": "1",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    },
+    {
+      "title": "Symphony No.2\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": "Orchestra: piccolo, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons,4 horns, 2 trumpets, 3 trombones, tuba, timpani, cymbals, bass drum, tam-tam, strings\n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "2 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "2 ",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "",
+          "cymbal": "1",
+          "bass drum": "1",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    },
+    {
+      "title": "Symphony No.3\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": "piccolo, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons4 horns, 2 trumpets, 3 trombones, tuba, timpani, strings\n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "2 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "2 ",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "",
+          "cymbal": "",
+          "bass drum": "",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    },
+    {
+      "title": "Symphony No.4\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": "piccolo, 2 flutes, 2 oboes, 2 clarinets, 2 bassoons4 horns, 2 trumpets, 3 trombones, tubatimpani, triangle, cymbals, bass drum, strings\n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "2 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "2 ",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "1",
+          "cymbal": "1",
+          "bass drum": "1",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    },
+    {
+      "title": "Symphony No.5\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": " 3 flutes (3rd also piccolo), 2 oboes, 2 clarinets, 2 bassoons4 horns, 2 trumpets, 3 trombones, tuba, timpani, strings \n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "3 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "2 ",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "",
+          "cymbal": "",
+          "bass drum": "",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    },
+    {
+      "title": "Symphony No.6\n",
+      "compose": "Tchaikovsky, Pyotr\n",
+      "style": "Romantic\n",
+      "instrument": " 3 flutes (3rd also piccolo), 2 oboes, 2 clarinets, 2 bassoons4 horns, 2 trumpets, 3 trombones, tubatimpani, cymbals, bass drum, tam-tam (ad lib.), strings \n",
+      "Instrs": {
+        "strings": "",
+        "wood": {
+          "piccolo": "1",
+          "flute": "3 ",
+          "oboe": "2 ",
+          "english horn": "",
+          "clarinet": "2 ",
+          "bass clarinet": "",
+          "bassoon": "2 ",
+          "contra bassoon": ""
+        },
+        "brass": {
+          "horn": "4 ",
+          "trumpet": "2 ",
+          "trombone": "3 ",
+          "tuba": "1"
+        },
+        "perc": {
+          "timpani": "1",
+          "triangle": "",
+          "cymbal": "1",
+          "bass drum": "1",
+          "snare drum": "",
+          "organ": "",
+          "piano": "",
+          "harp": "",
+          "tambourine": "",
+          "bells": "",
+          "cannon": ""
+        }
+      }
+    }
+  ]

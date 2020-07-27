@@ -1,7 +1,7 @@
 package crawler
 
 import (
-	errcheck "imslp/ErrorCheck"
+	"imslp/errcheck"
 	imdata "imslp/imslpData"
 	"net/http"
 

@@ -102,7 +102,11 @@ github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/temoto/robotstxt v1.1.1 h1:Gh8RCs8ouX3hRSxxK7B1mO5RFByQ4CmJZDwgom++JaA=
 github.com/temoto/robotstxt v1.1.1/go.mod h1:+1AmkuG3IYkh1kv0d2qEB9Le88ehNO0zwOr3ujewlOo=
+github.com/wildducktheories/go-csv v0.0.0-20170625071029-a843eda7bf09 h1:2WLbl2OxSc7JREBkH4zmGLrJFtveg6t/t4zUxm5nt0M=
+github.com/wildducktheories/go-csv v0.0.0-20170625071029-a843eda7bf09/go.mod h1:DSJlABltQXalRB6r3jCqZH7Vb9tWSqytKWVVNBDsWSU=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
+github.com/yukithm/json2csv v0.1.1 h1:GA+fHgyx/YX74y+bZKFbrxPcHRhkHpyBDlJxFIt9x4c=
+github.com/yukithm/json2csv v0.1.1/go.mod h1:DiytIJ+lf85x6MbsHuEpM6X59BvgNS4Kh0QDtORy5AE=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20190605123033-f99c8df09eb5/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
 golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=

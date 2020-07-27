@@ -3,7 +3,7 @@ package conn
 import (
 	"crypto/tls"
 	"fmt"
-	errcheck "imslp/ErrorCheck"
+	"imslp/errcheck"
 	"io/ioutil"
 	"log"
 	"net/http"
