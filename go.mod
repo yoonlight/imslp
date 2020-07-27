@@ -11,6 +11,4 @@ require (
 	github.com/jszwec/csvutil v1.3.0 // indirect
 	github.com/mattn/go-sqlite3 v1.14.0
 	github.com/rocketlaunchr/google-search v1.0.0
-	github.com/wildducktheories/go-csv v0.0.0-20170625071029-a843eda7bf09
-	github.com/yukithm/json2csv v0.1.1
 )
