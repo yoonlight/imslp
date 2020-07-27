@@ -2,11 +2,15 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
+	"fmt"
 	conn "imslp/connect"
 	"imslp/crawler"
+	"imslp/errcheck"
 	imdata "imslp/imslpData"
 	imparse "imslp/imslpParse"
 	"imslp/input"
+	"io/ioutil"
 	"log"
 	"os"
 	"strings"
@@ -14,13 +18,14 @@ import (
 
 func main() {
 	var (
-		in string
-		// title  string
+		in     string
+		title  string
 		errmsg = "imslp read error"
 		lists  []input.List
 		id     = 0
 		imData imdata.IMSLPInfo
 		music  []imdata.IMSLPInfo
+		instr  string
 	)
 
 	for {
@@ -40,26 +45,19 @@ func main() {
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
 
-		imData = crawler.IMSLPScrape(res)
-		m := imparse.ParseInstr2(imData.Instr)
+		imData, instr = crawler.IMSLPScrape(res)
+		m := imparse.ParseInstr2(instr)
 		imData.Instrs = m
 		music = append(music, imData)
 		defer res.Body.Close()
 	}
 
-	// 	for _, m := range music {
-	// 	instr, _ := json.Marshal(m)
-	// 	// log.Println(string(instr))
-	// 	// // wr.Write([]string{string(instr)})
-	// 	errj := json.Unmarshal(instr, data)
-	// 	// errcheck.CheckError(errj, "asdasdsa")
-	// 	a, _ := json2csv.JSON2CSV(data)
-	// 	// headerStyle := headerStyleTable[c.String("header-style")]
-	// 	err := printCSV(os.Stdout, a)
-	// 	errcheck.CheckError(err, "print error")
-	// }
-	// log.Println("Enter your csv file's Title")
-	// fmt.Scanln(&title)
-	// createcsv.CreateCsv(music, list, "./"+title+".csv")
-	// log.Println("Complete")
+	data, _ := json.MarshalIndent(music, "", "  ")
+
+	log.Println("Enter your json file's Title")
+	fmt.Scanln(&title)
+	log.Println("Complete")
+	errc := ioutil.WriteFile("./"+title+".json", data, 0)
+	errcheck.CheckError(errc, "")
+
 }

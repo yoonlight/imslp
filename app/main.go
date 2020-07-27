@@ -1,13 +1,16 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	pkgcsv "imslp/CreateCsv"
 	conn "imslp/connect"
 	"imslp/crawler"
+	"imslp/errcheck"
 	imdata "imslp/imslpData"
 	imslpparse "imslp/imslpParse"
 	"imslp/input"
+	"io/ioutil"
 	"log"
 	"strings"
 
@@ -29,6 +32,7 @@ func main() {
 		label  []*widget.Label
 		checks []*widget.Check
 		music  []imdata.IMSLPInfo
+		instr  string
 	)
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
@@ -109,7 +113,6 @@ func main() {
 		}
 	})
 	export := widget.NewButton("Export CSV", func() {
-		list := make(map[int]map[string]string)
 		i := 0
 		for _, imslp := range lists {
 			if imslp.IsDel != true {
@@ -117,22 +120,27 @@ func main() {
 				log.Println(temp)
 				res := conn.ConnectTLS(temp, errmsg)
 				imData, instr = crawler.IMSLPScrape(res)
-				m := imslpparse.ParseInstr(imData.Instr)
-				list[i] = m
+				m := imslpparse.ParseInstr2(instr)
+				imData.Instrs = m
 				music = append(music, imData)
 				defer res.Body.Close()
 				i++
 			}
 		}
+
 		title := widget.NewEntry()
 		content := widget.NewForm(widget.NewFormItem("Title", title))
 		dialog.ShowCustomConfirm("Enter your csv file's Title", "Submit", "Cancel", content, func(b bool) {
-			log.Println("Enter your csv file's Title")
+			log.Println("Enter your json file's Title")
 			if !b {
 				log.Println("Cancle")
 				return
 			}
-			pkgcsv.CreateCsv(music, list, "./"+title.Text+".csv")
+			data, _ := json.MarshalIndent(music, "", "  ")
+			file := "./" + title.Text + ".json"
+			log.Println("Complete")
+			errc := ioutil.WriteFile(file, data, 0)
+			errcheck.CheckError(errc, "")
 			log.Println("Complete")
 		}, myWindow)
 	})
