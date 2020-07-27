@@ -8,8 +8,8 @@ import (
 
 // ParseInstr2 : 악기 별로 parsing 해줌
 func ParseInstr2(instrument string) (m imdata.Instr) {
-	reg := `(?m)(?s)flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn|side drum|tambourine|cannon|bells|trumpet`
-	reg2 := `(?m)(?s)(\d.)(flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn|side drum|tambourine|cannon|bells|trumpet)`
+	reg := `(?m)(?s)flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn|side drum|tambourine|cannon|bells|trumpet|flute`
+	reg2 := `(?m)(?s)(\d.)(flutes|oboes|English horn|clarinets|bass clarinet|bassoons|contrabassoon|horns|trumpets|trombones|tuba|timpani|triangle|cymbals|bass drum|organ|piano|harp|piccolo|english horn|side drum|tambourine|cannon|bells|trumpet|flute)`
 	var re = regexp.MustCompile(reg)
 	for _, match := range re.FindAllStringSubmatch(instrument, -1) {
 		num := strconv.Itoa(1)
@@ -29,7 +29,7 @@ func caseParse2(num string, name string, m imdata.Instr) imdata.Instr {
 	switch name {
 	case "piccolo":
 		m.Wood.Piccolo = num
-	case "flutes":
+	case "flutes", "flute":
 		m.Wood.Flute = num
 	case "oboes":
 		m.Wood.Oboe = num
