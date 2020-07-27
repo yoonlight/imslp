@@ -2,8 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
-	createcsv "imslp/CreateCsv"
 	conn "imslp/connect"
 	"imslp/crawler"
 	imdata "imslp/imslpData"
@@ -23,7 +21,6 @@ func main() {
 		id     = 0
 		imData imdata.IMSLPInfo
 		music  []imdata.IMSLPInfo
-		data   interface{}
 	)
 
 	for {
@@ -49,9 +46,7 @@ func main() {
 		music = append(music, imData)
 		defer res.Body.Close()
 	}
-	for _, m := range music {
 
-	}
 	// 	for _, m := range music {
 	// 	instr, _ := json.Marshal(m)
 	// 	// log.Println(string(instr))
@@ -63,8 +58,8 @@ func main() {
 	// 	err := printCSV(os.Stdout, a)
 	// 	errcheck.CheckError(err, "print error")
 	// }
-	log.Println("Enter your csv file's Title")
-	fmt.Scanln(&title)
-	createcsv.CreateCsv(music, list, "./"+title+".csv")
-	log.Println("Complete")
+	// log.Println("Enter your csv file's Title")
+	// fmt.Scanln(&title)
+	// createcsv.CreateCsv(music, list, "./"+title+".csv")
+	// log.Println("Complete")
 }

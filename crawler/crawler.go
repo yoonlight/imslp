@@ -9,7 +9,7 @@ import (
 )
 
 // IMSLPScrape : scrapes symphony to use infromation part crawling
-func IMSLPScrape(res *http.Response) (imData imdata.IMSLPInfo) {
+func IMSLPScrape(res *http.Response) (imData imdata.IMSLPInfo, instr string) {
 	doc, err := goquery.NewDocumentFromReader(res.Body)
 	errcheck.CheckError(err, "imslp data Read Error")
 
@@ -24,10 +24,10 @@ func IMSLPScrape(res *http.Response) (imData imdata.IMSLPInfo) {
 			imData.Style = s.Find("td").Text()
 		}
 		if s.Find("th").Text() == "Instrumentation\n" {
-			imData.Instr = s.Find("td").Text()
+			instr = s.Find("td").Text()
 		}
 		if s.Find("th").Text() == "InstrDetail\n" {
-			imData.Instr = s.Find("td").Text()
+			instr = s.Find("td").Text()
 		}
 	})
 	return

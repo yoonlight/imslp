@@ -25,6 +25,7 @@ func main() {
 		id     = 0
 		imData imdata.IMSLPInfo
 		music  []imdata.IMSLPInfo
+		instr  string
 	)
 
 	for {
@@ -44,19 +45,19 @@ func main() {
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
 
-		imData = crawler.IMSLPScrape(res)
-		m := imparse.ParseInstr2(imData.Instr)
+		imData, instr = crawler.IMSLPScrape(res)
+		m := imparse.ParseInstr2(instr)
 		imData.Instrs = m
 		music = append(music, imData)
 		defer res.Body.Close()
 	}
 
-	instr, _ := json.MarshalIndent(music, "", "  ")
+	data, _ := json.MarshalIndent(music, "", "  ")
 
 	log.Println("Enter your json file's Title")
 	fmt.Scanln(&title)
 	log.Println("Complete")
-	errc := ioutil.WriteFile("./"+title+".json", instr, 0)
+	errc := ioutil.WriteFile("./"+title+".json", data, 0)
 	errcheck.CheckError(errc, "")
 
 }

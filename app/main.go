@@ -116,7 +116,7 @@ func main() {
 				temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
 				log.Println(temp)
 				res := conn.ConnectTLS(temp, errmsg)
-				imData = crawler.IMSLPScrape(res)
+				imData, instr = crawler.IMSLPScrape(res)
 				m := imslpparse.ParseInstr(imData.Instr)
 				list[i] = m
 				music = append(music, imData)
