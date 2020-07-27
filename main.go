@@ -25,7 +25,6 @@ func main() {
 		id     = 0
 		imData imdata.IMSLPInfo
 		music  []imdata.IMSLPInfo
-		instr  string
 	)
 
 	for {
@@ -45,8 +44,8 @@ func main() {
 		log.Println(temp)
 		res := conn.ConnectTLS(temp, errmsg)
 
-		imData, instr = crawler.IMSLPScrape(res)
-		m := imparse.ParseInstr2(instr)
+		imData = crawler.IMSLPScrape(res)
+		m := imparse.ParseInstr2(imData.Instr)
 		imData.Instrs = m
 		music = append(music, imData)
 		defer res.Body.Close()

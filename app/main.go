@@ -32,7 +32,6 @@ func main() {
 		label  []*widget.Label
 		checks []*widget.Check
 		music  []imdata.IMSLPInfo
-		instr  string
 	)
 	myApp := app.New()
 	myWindow := myApp.NewWindow("IMSLP")
@@ -119,8 +118,8 @@ func main() {
 				temp := strings.TrimSpace(imslp.URL) + "#tabScore2"
 				log.Println(temp)
 				res := conn.ConnectTLS(temp, errmsg)
-				imData, instr = crawler.IMSLPScrape(res)
-				m := imslpparse.ParseInstr2(instr)
+				imData = crawler.IMSLPScrape(res)
+				m := imslpparse.ParseInstr2(imData.Instr)
 				imData.Instrs = m
 				music = append(music, imData)
 				defer res.Body.Close()
